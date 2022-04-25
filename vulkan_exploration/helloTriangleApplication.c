@@ -1,4 +1,4 @@
-#include "hello_triangle_application.h"
+#include "helloTriangleApplication.h"
 
 // Activates GLFW preprocessor directive to also load Vulkan header
 #define GLFW_INCLUDE_VULKAN

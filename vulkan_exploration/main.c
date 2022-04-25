@@ -1,4 +1,4 @@
-#include "hello_triangle_application.h"
+#include "helloTriangleApplication.h"
 
 #include <stdio.h>
 
