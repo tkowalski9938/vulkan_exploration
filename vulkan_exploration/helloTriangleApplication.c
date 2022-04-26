@@ -13,7 +13,12 @@
 #include <stdbool.h>
 
 static VkInstance instance;
-static VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
+
+static VkPhysicalDevice physicalDevice;
+
+
+
+
 
 static void createInstance(void) {
     // checks for extension support
@@ -72,8 +77,41 @@ static void createInstance(void) {
            "failed to create instance");
 }
 
+
+
+
+// checks if devices has queue family that supports VK_QUEUE_GRAPHICS_BIT
+struct QueueFamilyIndices{
+    uint32_t graphicsFamily;
+    bool graphicsFamilyFound;
+};
+typedef struct QueueFamilyIndices QueueFamilyIndices;
+
+QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
+    QueueFamilyIndices indices;
+    indices.graphicsFamilyFound = false;
+    
+    uint32_t queueFamilyCount = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, NULL);
+    VkQueueFamilyProperties *queueFamilies = malloc(sizeof(VkQueueFamilyProperties));
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies);
+    
+    for (int i = 0; i < queueFamilyCount; ++i) {
+        if (queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+            indices.graphicsFamily = i;
+            indices.graphicsFamilyFound = true;
+            break;
+        }
+    }
+    assert(indices.graphicsFamilyFound && "missing needed queue family");
+    return indices;
+}
+
+
 static bool isDeviceSuitable(VkPhysicalDevice device) {
-    return true;
+    QueueFamilyIndices indices = findQueueFamilies(device);
+    
+    return indices.graphicsFamilyFound;
 }
 
 static void getPhysicalDeviceProperties(void) {
@@ -104,6 +142,12 @@ static void pickPhysicalDevice(void) {
     free(devices);
     assert(physicalDevice != VK_NULL_HANDLE && "failed to find suitable GPU");
 }
+
+
+
+
+
+
 
 static void initVulkan(void) {
     createInstance();
