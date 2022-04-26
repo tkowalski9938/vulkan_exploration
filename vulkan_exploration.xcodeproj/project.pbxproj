@@ -16,6 +16,7 @@
 		A3E359F32816EB6000D9780A /* libvulkan.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3E359EB2816EB2E00D9780A /* libvulkan.1.dylib */; };
 		A3E359F62816EBC900D9780A /* helloTriangleApplication.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E359F52816EBC900D9780A /* helloTriangleApplication.c */; };
 		A3E359FC2818478000D9780A /* validation.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E359FB2818478000D9780A /* validation.c */; };
+		A3E359FF28184C5C00D9780A /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E359FE28184C5C00D9780A /* window.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		A3E359F52816EBC900D9780A /* helloTriangleApplication.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = helloTriangleApplication.c; sourceTree = "<group>"; };
 		A3E359FA2818478000D9780A /* validation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = validation.h; sourceTree = "<group>"; };
 		A3E359FB2818478000D9780A /* validation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = validation.c; sourceTree = "<group>"; };
+		A3E359FD28184C5C00D9780A /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
+		A3E359FE28184C5C00D9780A /* window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = window.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 				A3E359E32816EACE00D9780A /* main.c */,
 				A3E359F42816EBC900D9780A /* helloTriangleApplication.h */,
 				A3E359F52816EBC900D9780A /* helloTriangleApplication.c */,
+				A3E359FD28184C5C00D9780A /* window.h */,
+				A3E359FE28184C5C00D9780A /* window.c */,
 				A3E359FA2818478000D9780A /* validation.h */,
 				A3E359FB2818478000D9780A /* validation.c */,
 			);
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E359FC2818478000D9780A /* validation.c in Sources */,
+				A3E359FF28184C5C00D9780A /* window.c in Sources */,
 				A3E359F62816EBC900D9780A /* helloTriangleApplication.c in Sources */,
 				A3E359E42816EACE00D9780A /* main.c in Sources */,
 			);
