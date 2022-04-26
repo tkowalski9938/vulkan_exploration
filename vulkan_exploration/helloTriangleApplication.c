@@ -6,6 +6,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
+#include <stdbool.h>
 
 static GLFWwindow* window;
 static VkInstance instance;
@@ -28,6 +30,21 @@ static void initWindow(void) {
 }
 
 static void createInstance(void) {
+    // checks for extension support
+    uint32_t extensionCount = 0;
+    vkEnumerateInstanceExtensionProperties(NULL, &extensionCount, NULL);
+    
+    VkExtensionProperties *p_extensions = malloc(extensionCount * sizeof(VkExtensionProperties));
+    
+    vkEnumerateInstanceExtensionProperties(NULL, &extensionCount, p_extensions);
+    
+    printf("avaible extensions:\n");
+    for (int i = 0; i < extensionCount; ++i) {
+        printf("\t%s\n", p_extensions[i * sizeof(VkExtensionProperties)].extensionName);
+    }
+    free(p_extensions);
+    
+    
     // optional data that may provide useful information to the driver
     VkApplicationInfo appInfo;
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -56,16 +73,12 @@ static void createInstance(void) {
     createInfo.enabledLayerCount = 0;
     
     // creates the instance, stored outside of stack frame. checks if successful
-    if (vkCreateInstance(&createInfo, NULL, &instance) != VK_SUCCESS) {
-        fprintf(stderr, "failed to create instance");
-    }
+    assert((vkCreateInstance(&createInfo, NULL, &instance) == VK_SUCCESS) &&
+           "failed to create instance");
 }
 
 static void initVulkan(void) {
     createInstance();
-    
-    // checks for extension support
-    
 }
 
 static void mainLoop(void) {

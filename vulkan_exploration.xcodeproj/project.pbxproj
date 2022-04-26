@@ -150,8 +150,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3E359F62816EBC900D9780A /* helloTriangleApplication.c in Sources */,
 				A3E359E42816EACE00D9780A /* main.c in Sources */,
+				A3E359F62816EBC900D9780A /* helloTriangleApplication.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
