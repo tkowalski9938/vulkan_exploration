@@ -5,15 +5,15 @@
 #include <GLFW/glfw3.h>
 
 #include <stdlib.h>
+#include <stdio.h>
+
+static GLFWwindow* window;
+static VkInstance instance;
 
 static const uint32_t WIDTH = 800;
 static const uint32_t HEIGHT = 600;
 
-static VkInstance instance;
-
-
-
-static GLFWwindow* initWindow(void) {
+static void initWindow(void) {
     // initializes the GLFW library
     glfwInit();
     
@@ -24,14 +24,8 @@ static GLFWwindow* initWindow(void) {
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
     
     // create the window
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", NULL, NULL);
-    
-    return window;
+    window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", NULL, NULL);
 }
-
-
-
-
 
 static void createInstance(void) {
     // optional data that may provide useful information to the driver
@@ -61,33 +55,27 @@ static void createInstance(void) {
     
     createInfo.enabledLayerCount = 0;
     
-    // creates the instance, stored outside of stack frame
-    vkCreateInstance(&createInfo, NULL, &instance);
+    // creates the instance, stored outside of stack frame. checks if successful
+    if (vkCreateInstance(&createInfo, NULL, &instance) != VK_SUCCESS) {
+        fprintf(stderr, "failed to create instance");
+    }
 }
 
 static void initVulkan(void) {
     createInstance();
     
-    // did not check if extensions are all supported
+    // checks for extension support
+    
 }
 
-
-
-
-
-
-static void mainLoop(GLFWwindow *window) {
+static void mainLoop(void) {
     // keeps the application running until window closed
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
     }
 }
 
-
-
-
-
-static void cleanup(GLFWwindow *window) {
+static void cleanup(void) {
     // destroys the Vulkan instance
     vkDestroyInstance(instance, NULL);
     
@@ -98,15 +86,9 @@ static void cleanup(GLFWwindow *window) {
     glfwTerminate();
 }
 
-
-
-
-
 void run(void) {
     initVulkan();
-    
-    GLFWwindow* window = initWindow();
-    
-    mainLoop(window);
-    cleanup(window);
+    initWindow();
+    mainLoop();
+    cleanup();
 }
