@@ -1,4 +1,5 @@
 #include "helloTriangleApplication.h"
+#include "validation.h"
 
 // Activates GLFW preprocessor directive to also load Vulkan header
 #define GLFW_INCLUDE_VULKAN
@@ -18,38 +19,6 @@ static VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
 static const uint32_t WIDTH = 800;
 static const uint32_t HEIGHT = 600;
 
-const char *validationLayers[] = {"VK_LAYER_KHRONOS_validation"};
-const int numValidationLayers = 1;
-
-// DISABLE during deployment
-const bool enableValidationLayers = true;
-
-// checks if all the requested layers are avaiable
-static bool checkValidationLayerSupport(void) {
-    uint32_t layerCount;
-    vkEnumerateInstanceLayerProperties(&layerCount, NULL);
-    
-    VkLayerProperties *availableLayers = malloc(sizeof(VkLayerProperties) *
-                                                layerCount);
-    vkEnumerateInstanceLayerProperties(&layerCount, availableLayers);
-    
-    
-    for (int i = 0; i < numValidationLayers; ++i) {
-        bool layerFound = false;
-        for (int k = 0; k < layerCount; ++k) {
-            if (strcmp(validationLayers[i], availableLayers[k].layerName) == 0) {
-                layerFound = true;
-                break;
-            }
-        }
-        if (!layerFound) {
-            free(availableLayers);
-            return false;
-        }
-    }
-    free(availableLayers);
-    return true;
-}
 
 static void initWindow(void) {
     // initializes the GLFW library
