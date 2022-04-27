@@ -1,9 +1,5 @@
-#include "helloTriangleApplication.h"
-
-#include <stdio.h>
+#include "HelloTriangleApplication.h"
 
 int main(void) {
-    fprintf(stderr, "hello world");
     run();
-    return 0;
 }

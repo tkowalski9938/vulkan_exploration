@@ -14,6 +14,10 @@
 		A3E359F12816EB6000D9780A /* libglfw.3.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3E359EF2816EB5600D9780A /* libglfw.3.3.dylib */; };
 		A3E359F22816EB6000D9780A /* libvulkan.1.3.211.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3E359ED2816EB3000D9780A /* libvulkan.1.3.211.dylib */; };
 		A3E359F32816EB6000D9780A /* libvulkan.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3E359EB2816EB2E00D9780A /* libvulkan.1.dylib */; };
+		A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A072819744B00D9780A /* HelloTriangleApplication.c */; };
+		A3E35A0C281975CB00D9780A /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A0B281975CB00D9780A /* window.c */; };
+		A3E35A102819795700D9780A /* instance.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A0F2819795700D9780A /* instance.c */; };
+		A3E35A1328197E1000D9780A /* extensionSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A1228197E1000D9780A /* extensionSupport.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +41,14 @@
 		A3E359EB2816EB2E00D9780A /* libvulkan.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.dylib; path = ../../../../VulkanSDK/1.3.211.0/macOS/lib/libvulkan.1.dylib; sourceTree = "<group>"; };
 		A3E359ED2816EB3000D9780A /* libvulkan.1.3.211.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.3.211.dylib; path = ../../../../VulkanSDK/1.3.211.0/macOS/lib/libvulkan.1.3.211.dylib; sourceTree = "<group>"; };
 		A3E359EF2816EB5600D9780A /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../opt/homebrew/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		A3E35A062819744B00D9780A /* HelloTriangleApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloTriangleApplication.h; sourceTree = "<group>"; };
+		A3E35A072819744B00D9780A /* HelloTriangleApplication.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = HelloTriangleApplication.c; sourceTree = "<group>"; };
+		A3E35A0A281975CB00D9780A /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
+		A3E35A0B281975CB00D9780A /* window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = window.c; sourceTree = "<group>"; };
+		A3E35A0E2819795700D9780A /* instance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = instance.h; sourceTree = "<group>"; };
+		A3E35A0F2819795700D9780A /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
+		A3E35A1128197E1000D9780A /* extensionSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = extensionSupport.h; sourceTree = "<group>"; };
+		A3E35A1228197E1000D9780A /* extensionSupport.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = extensionSupport.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				A3E359E32816EACE00D9780A /* main.c */,
+				A3E35A072819744B00D9780A /* HelloTriangleApplication.c */,
+				A3E35A062819744B00D9780A /* HelloTriangleApplication.h */,
+				A3E35A0D2819792D00D9780A /* vulkan */,
+				A3E35A092819758000D9780A /* glfwFuncs */,
 			);
 			path = vulkan_exploration;
 			sourceTree = "<group>";
@@ -86,6 +102,26 @@
 				A3E359EB2816EB2E00D9780A /* libvulkan.1.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3E35A092819758000D9780A /* glfwFuncs */ = {
+			isa = PBXGroup;
+			children = (
+				A3E35A0A281975CB00D9780A /* window.h */,
+				A3E35A0B281975CB00D9780A /* window.c */,
+			);
+			path = glfwFuncs;
+			sourceTree = "<group>";
+		};
+		A3E35A0D2819792D00D9780A /* vulkan */ = {
+			isa = PBXGroup;
+			children = (
+				A3E35A0E2819795700D9780A /* instance.h */,
+				A3E35A0F2819795700D9780A /* instance.c */,
+				A3E35A1128197E1000D9780A /* extensionSupport.h */,
+				A3E35A1228197E1000D9780A /* extensionSupport.c */,
+			);
+			path = vulkan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,7 +181,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3E35A1328197E1000D9780A /* extensionSupport.c in Sources */,
+				A3E35A102819795700D9780A /* instance.c in Sources */,
+				A3E35A0C281975CB00D9780A /* window.c in Sources */,
 				A3E359E42816EACE00D9780A /* main.c in Sources */,
+				A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
