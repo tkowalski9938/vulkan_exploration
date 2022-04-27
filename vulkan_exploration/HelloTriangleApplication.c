@@ -1,9 +1,12 @@
 #include "HelloTriangleApplication.h"
-#include <vulkan/vulkan.h>
-#include "init/window.h"
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+#include "presentation/presentSetup.h"
 #include "init/instance.h"
 #include "init/physicalDevice.h"
 #include "init/logicalDevice.h"
+
+GLFWwindow *window;
 
 VkInstance instance;
 VkPhysicalDevice physicalDevice;
@@ -19,7 +22,7 @@ static void initVulkan(void) {
 
 // clears resources allocated
 static void cleanup(void) {
-    glfwCleanup();
+    glfwCleanup(window);
     
     vkDestroyDevice(device, NULL);
     
@@ -27,9 +30,9 @@ static void cleanup(void) {
 }
 
 void run(void) {
-    initWindow();
+    GLFWwindow *window = initWindow();
     initVulkan();
-    mainLoop();
+    mainLoop(window);
     cleanup();
 }
 
