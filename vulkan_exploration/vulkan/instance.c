@@ -27,7 +27,14 @@ void createInstance(VkInstance *instance){
     createInfo.enabledExtensionCount = glfwExtensionCount;
     createInfo.ppEnabledExtensionNames = glfwExtensions;
     
-    createInfo.enabledLayerCount = 0;
+    //adds validation layer info to instance if enabled
+    if (enableValidationLayers) {
+        createInfo.enabledLayerCount = numValidationLayers;
+        createInfo.ppEnabledLayerNames = validationLayers;
+    }
+    else {
+        createInfo.enabledLayerCount = 0;
+    }
     
     assert((vkCreateInstance(&createInfo, NULL, instance) == VK_SUCCESS) && "failed to create instance");
 }

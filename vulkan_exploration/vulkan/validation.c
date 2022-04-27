@@ -7,10 +7,10 @@
 // SET FALSE BEFORE DEPLOYMENT
 const bool enableValidationLayers = true;
 
-static const char *validationLayers[] = { "VK_LAYER_KHRONOS_validation"
+const char *validationLayers[] = { "VK_LAYER_KHRONOS_validation"
 };
 
-static const int numValidationLayers = 1;
+const uint32_t numValidationLayers = 1;
 
 bool checkValidationLayerSupport(void) {
     uint32_t layerCount;

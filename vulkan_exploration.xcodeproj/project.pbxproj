@@ -49,7 +49,6 @@
 		A3E35A0F2819795700D9780A /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
 		A3E35A14281982E200D9780A /* validation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = validation.h; sourceTree = "<group>"; };
 		A3E35A15281982E200D9780A /* validation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = validation.c; sourceTree = "<group>"; };
-		A3E35A17281987C400D9780A /* enableValidationLayers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = enableValidationLayers.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				A3E35A0E2819795700D9780A /* instance.h */,
-				A3E35A17281987C400D9780A /* enableValidationLayers.h */,
 				A3E35A0F2819795700D9780A /* instance.c */,
 				A3E35A14281982E200D9780A /* validation.h */,
 				A3E35A15281982E200D9780A /* validation.c */,
