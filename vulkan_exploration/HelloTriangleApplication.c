@@ -1,8 +1,8 @@
 #include "HelloTriangleApplication.h"
 #include <vulkan/vulkan.h>
-#include "glfwFuncs/window.h"
-#include "vulkan/instance.h"
-#include "vulkan/physicalDevice.h"
+#include "init/window.h"
+#include "init/instance.h"
+#include "init/physicalDevice.h"
 
 VkInstance instance;
 VkPhysicalDevice physicalDevice;

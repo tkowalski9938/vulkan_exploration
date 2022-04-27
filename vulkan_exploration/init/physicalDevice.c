@@ -4,8 +4,47 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+struct QueueFamilyIndices {
+    uint32_t graphicsFamily;
+    bool graphicsFamilyFound;
+};
+
+typedef struct QueueFamilyIndices QueueFamilyIndices;
+
+static bool isComplete(struct QueueFamilyIndices indices) {
+    if (indices.graphicsFamilyFound) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+static QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
+    QueueFamilyIndices indices;
+    indices.graphicsFamilyFound = false;
+    
+    uint32_t queueFamilyCount = 0;
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, NULL);
+    VkQueueFamilyProperties *queueFamilies = malloc(queueFamilyCount * sizeof(VkQueueFamilyProperties));
+    vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies);
+    
+    for (int i = 0; i < queueFamilyCount; ++i) {
+        if (queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+            indices.graphicsFamily = i;
+            indices.graphicsFamilyFound = true;
+        }
+        if (isComplete(indices)) {
+            break;
+        }
+    }
+    free(queueFamilies);
+    return indices;
+}
+
 static bool isDeviceSuitable(VkPhysicalDevice device) {
-    return true;
+    QueueFamilyIndices indices = findQueueFamilies(device);
+    return isComplete(indices);
 }
 
 void pickPhysicalDevice(VkInstance *instance, VkPhysicalDevice *physicalDevice) {
@@ -26,5 +65,6 @@ void pickPhysicalDevice(VkInstance *instance, VkPhysicalDevice *physicalDevice) 
             break;
         }
     }
+    free(devices);
     assert(foundSuitableDevice && "failed to find suitable GPU");
 }

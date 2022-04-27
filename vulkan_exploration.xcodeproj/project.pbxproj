@@ -91,8 +91,7 @@
 				A3E359E32816EACE00D9780A /* main.c */,
 				A3E35A072819744B00D9780A /* HelloTriangleApplication.c */,
 				A3E35A062819744B00D9780A /* HelloTriangleApplication.h */,
-				A3E35A0D2819792D00D9780A /* vulkan */,
-				A3E35A092819758000D9780A /* glfwFuncs */,
+				A3E35A1D2819941100D9780A /* init */,
 			);
 			path = vulkan_exploration;
 			sourceTree = "<group>";
@@ -107,16 +106,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A3E35A092819758000D9780A /* glfwFuncs */ = {
-			isa = PBXGroup;
-			children = (
-				A3E35A0A281975CB00D9780A /* window.h */,
-				A3E35A0B281975CB00D9780A /* window.c */,
-			);
-			path = glfwFuncs;
-			sourceTree = "<group>";
-		};
-		A3E35A0D2819792D00D9780A /* vulkan */ = {
+		A3E35A1D2819941100D9780A /* init */ = {
 			isa = PBXGroup;
 			children = (
 				A3E35A0E2819795700D9780A /* instance.h */,
@@ -125,8 +115,10 @@
 				A3E35A15281982E200D9780A /* validation.c */,
 				A3E35A1A28198B9200D9780A /* physicalDevice.h */,
 				A3E35A1B28198B9200D9780A /* physicalDevice.c */,
+				A3E35A0A281975CB00D9780A /* window.h */,
+				A3E35A0B281975CB00D9780A /* window.c */,
 			);
-			path = vulkan;
+			path = init;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
