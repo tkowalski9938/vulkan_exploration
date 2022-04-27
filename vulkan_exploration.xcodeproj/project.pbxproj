@@ -20,6 +20,7 @@
 		A3E35A16281982E200D9780A /* validation.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A15281982E200D9780A /* validation.c */; };
 		A3E35A1C28198B9200D9780A /* physicalDevice.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A1B28198B9200D9780A /* physicalDevice.c */; };
 		A3E35A232819ACE600D9780A /* queue.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A222819ACE600D9780A /* queue.c */; };
+		A3E35A262819AE7400D9780A /* logicalDevice.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A252819AE7400D9780A /* logicalDevice.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,8 @@
 		A3E35A1B28198B9200D9780A /* physicalDevice.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = physicalDevice.c; sourceTree = "<group>"; };
 		A3E35A212819ACE600D9780A /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		A3E35A222819ACE600D9780A /* queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = queue.c; sourceTree = "<group>"; };
+		A3E35A242819AE7400D9780A /* logicalDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = logicalDevice.h; sourceTree = "<group>"; };
+		A3E35A252819AE7400D9780A /* logicalDevice.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = logicalDevice.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				A3E35A222819ACE600D9780A /* queue.c */,
 				A3E35A0A281975CB00D9780A /* window.h */,
 				A3E35A0B281975CB00D9780A /* window.c */,
+				A3E35A242819AE7400D9780A /* logicalDevice.h */,
+				A3E35A252819AE7400D9780A /* logicalDevice.c */,
 			);
 			path = init;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				A3E35A16281982E200D9780A /* validation.c in Sources */,
 				A3E35A102819795700D9780A /* instance.c in Sources */,
 				A3E35A0C281975CB00D9780A /* window.c in Sources */,
+				A3E35A262819AE7400D9780A /* logicalDevice.c in Sources */,
 				A3E35A232819ACE600D9780A /* queue.c in Sources */,
 				A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */,
 				A3E35A1C28198B9200D9780A /* physicalDevice.c in Sources */,

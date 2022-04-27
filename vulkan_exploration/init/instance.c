@@ -7,7 +7,7 @@
 void createInstance(VkInstance *instance){
     assert((!enableValidationLayers || checkValidationLayerSupport()) && "validation layers requested, but not available");
     
-    VkApplicationInfo appInfo;
+    VkApplicationInfo appInfo = {};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
     appInfo.pApplicationName = "Hello Triangle";
     appInfo.applicationVersion = VK_MAKE_VERSION(1, 0, 0);
@@ -15,7 +15,7 @@ void createInstance(VkInstance *instance){
     appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
     appInfo.apiVersion = VK_API_VERSION_1_0;
     
-    VkInstanceCreateInfo createInfo;
+    VkInstanceCreateInfo createInfo = {};
     createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     createInfo.pApplicationInfo = &appInfo;
     

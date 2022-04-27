@@ -12,7 +12,7 @@ bool isComplete(struct QueueFamilyIndices indices) {
 }
 
 QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
-    QueueFamilyIndices indices;
+    QueueFamilyIndices indices = {};
     indices.graphicsFamilyFound = false;
     
     uint32_t queueFamilyCount = 0;
