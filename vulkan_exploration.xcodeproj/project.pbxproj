@@ -17,7 +17,7 @@
 		A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A072819744B00D9780A /* HelloTriangleApplication.c */; };
 		A3E35A0C281975CB00D9780A /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A0B281975CB00D9780A /* window.c */; };
 		A3E35A102819795700D9780A /* instance.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A0F2819795700D9780A /* instance.c */; };
-		A3E35A1328197E1000D9780A /* extensionSupport.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A1228197E1000D9780A /* extensionSupport.c */; };
+		A3E35A16281982E200D9780A /* validation.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A15281982E200D9780A /* validation.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,8 +47,9 @@
 		A3E35A0B281975CB00D9780A /* window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = window.c; sourceTree = "<group>"; };
 		A3E35A0E2819795700D9780A /* instance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = instance.h; sourceTree = "<group>"; };
 		A3E35A0F2819795700D9780A /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
-		A3E35A1128197E1000D9780A /* extensionSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = extensionSupport.h; sourceTree = "<group>"; };
-		A3E35A1228197E1000D9780A /* extensionSupport.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = extensionSupport.c; sourceTree = "<group>"; };
+		A3E35A14281982E200D9780A /* validation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = validation.h; sourceTree = "<group>"; };
+		A3E35A15281982E200D9780A /* validation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = validation.c; sourceTree = "<group>"; };
+		A3E35A17281987C400D9780A /* enableValidationLayers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = enableValidationLayers.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,9 +118,10 @@
 			isa = PBXGroup;
 			children = (
 				A3E35A0E2819795700D9780A /* instance.h */,
+				A3E35A17281987C400D9780A /* enableValidationLayers.h */,
 				A3E35A0F2819795700D9780A /* instance.c */,
-				A3E35A1128197E1000D9780A /* extensionSupport.h */,
-				A3E35A1228197E1000D9780A /* extensionSupport.c */,
+				A3E35A14281982E200D9780A /* validation.h */,
+				A3E35A15281982E200D9780A /* validation.c */,
 			);
 			path = vulkan;
 			sourceTree = "<group>";
@@ -181,7 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3E35A1328197E1000D9780A /* extensionSupport.c in Sources */,
+				A3E35A16281982E200D9780A /* validation.c in Sources */,
 				A3E35A102819795700D9780A /* instance.c in Sources */,
 				A3E35A0C281975CB00D9780A /* window.c in Sources */,
 				A3E359E42816EACE00D9780A /* main.c in Sources */,

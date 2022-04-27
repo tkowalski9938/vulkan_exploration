@@ -1,9 +1,12 @@
 #include "instance.h"
+#include "validation.h"
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
 #include <assert.h>
 
 void createInstance(VkInstance *instance){
+    assert((!enableValidationLayers || checkValidationLayerSupport()) && "validation layers requested, but not available");
+    
     VkApplicationInfo appInfo;
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
     appInfo.pApplicationName = "Hello Triangle";

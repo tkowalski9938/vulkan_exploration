@@ -13,6 +13,8 @@ static void initVulkan(void) {
 // clears resources allocated
 static void cleanup(void) {
     glfwCleanup();
+    
+    vkDestroyInstance(instance, NULL);
 }
 
 void run(void) {
