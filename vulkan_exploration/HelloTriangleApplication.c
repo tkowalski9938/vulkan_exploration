@@ -6,6 +6,7 @@
 
 VkInstance instance;
 VkPhysicalDevice physicalDevice;
+VkDevice device;
 
 // initializes Vulkan
 static void initVulkan(void) {
