@@ -18,6 +18,7 @@
 		A3E35A0C281975CB00D9780A /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A0B281975CB00D9780A /* window.c */; };
 		A3E35A102819795700D9780A /* instance.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A0F2819795700D9780A /* instance.c */; };
 		A3E35A16281982E200D9780A /* validation.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A15281982E200D9780A /* validation.c */; };
+		A3E35A1C28198B9200D9780A /* physicalDevice.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E35A1B28198B9200D9780A /* physicalDevice.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		A3E35A0F2819795700D9780A /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
 		A3E35A14281982E200D9780A /* validation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = validation.h; sourceTree = "<group>"; };
 		A3E35A15281982E200D9780A /* validation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = validation.c; sourceTree = "<group>"; };
+		A3E35A1A28198B9200D9780A /* physicalDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = physicalDevice.h; sourceTree = "<group>"; };
+		A3E35A1B28198B9200D9780A /* physicalDevice.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = physicalDevice.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				A3E35A0F2819795700D9780A /* instance.c */,
 				A3E35A14281982E200D9780A /* validation.h */,
 				A3E35A15281982E200D9780A /* validation.c */,
+				A3E35A1A28198B9200D9780A /* physicalDevice.h */,
+				A3E35A1B28198B9200D9780A /* physicalDevice.c */,
 			);
 			path = vulkan;
 			sourceTree = "<group>";
@@ -184,8 +189,9 @@
 				A3E35A16281982E200D9780A /* validation.c in Sources */,
 				A3E35A102819795700D9780A /* instance.c in Sources */,
 				A3E35A0C281975CB00D9780A /* window.c in Sources */,
-				A3E359E42816EACE00D9780A /* main.c in Sources */,
 				A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */,
+				A3E35A1C28198B9200D9780A /* physicalDevice.c in Sources */,
+				A3E359E42816EACE00D9780A /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
