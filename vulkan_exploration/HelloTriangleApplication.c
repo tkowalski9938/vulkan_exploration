@@ -19,8 +19,8 @@ VkSurfaceKHR surface;
 static void initVulkan(GLFWwindow *window) {
     createInstance(&instance);
     createSurface(&instance, window, &surface);
-    pickPhysicalDevice(&instance, &physicalDevice);
-    createLogicalDevice(&device, &physicalDevice, &graphicsQueue);
+    pickPhysicalDevice(&instance, &physicalDevice, surface);
+    createLogicalDevice(&device, &physicalDevice, &graphicsQueue, surface);
 }
 
 // clears resources allocated

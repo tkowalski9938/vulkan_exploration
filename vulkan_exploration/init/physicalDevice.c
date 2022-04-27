@@ -5,12 +5,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-static bool isDeviceSuitable(VkPhysicalDevice device) {
-    QueueFamilyIndices indices = findQueueFamilies(device);
+static bool isDeviceSuitable(VkPhysicalDevice device, VkSurfaceKHR surface) {
+    QueueFamilyIndices indices = findQueueFamilies(device, surface);
     return isComplete(indices);
 }
 
-void pickPhysicalDevice(VkInstance *instance, VkPhysicalDevice *physicalDevice) {
+void pickPhysicalDevice(VkInstance *instance, VkPhysicalDevice *physicalDevice, VkSurfaceKHR surface) {
 
     uint32_t deviceCount = 0;
     vkEnumeratePhysicalDevices(*instance, &deviceCount, NULL);
@@ -22,7 +22,7 @@ void pickPhysicalDevice(VkInstance *instance, VkPhysicalDevice *physicalDevice) 
     
     bool foundSuitableDevice = false;
     for (int i = 0; i < deviceCount; ++i) {
-        if (isDeviceSuitable(devices[i])) {
+        if (isDeviceSuitable(devices[i], surface)) {
             *physicalDevice = devices[i];
             foundSuitableDevice = true;
             break;

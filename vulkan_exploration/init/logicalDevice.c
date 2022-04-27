@@ -4,8 +4,8 @@
 #include <vulkan/vulkan.h>
 #include <assert.h>
 
-void createLogicalDevice(VkDevice *device, VkPhysicalDevice *physicalDevice, VkQueue *graphicsQueue) {
-    QueueFamilyIndices indices = findQueueFamilies(*physicalDevice);
+void createLogicalDevice(VkDevice *device, VkPhysicalDevice *physicalDevice, VkQueue *graphicsQueue, VkSurfaceKHR surface) {
+    QueueFamilyIndices indices = findQueueFamilies(*physicalDevice, surface);
     
     VkDeviceQueueCreateInfo queueCreateInfo = {};
     queueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
