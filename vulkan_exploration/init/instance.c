@@ -39,3 +39,4 @@ void createInstance(VkInstance *instance){
     assert((vkCreateInstance(&createInfo, NULL, instance) == VK_SUCCESS) && "failed to create instance");
 }
 
+
