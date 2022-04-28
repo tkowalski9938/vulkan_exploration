@@ -7,6 +7,7 @@ struct QueueFamilyIndices {
     bool graphicsFamilyFound;
     uint32_t presentFamily;
     bool presentFamilyFound;
+    uint32_t numFamiliesReq;
 };
 
 typedef struct QueueFamilyIndices QueueFamilyIndices;
