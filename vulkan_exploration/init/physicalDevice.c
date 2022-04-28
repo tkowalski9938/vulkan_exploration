@@ -3,11 +3,35 @@
 #include <vulkan/vulkan.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
+
+static const char *deviceExtensions = {
+    VK_KHR_SWAPCHAIN_EXTENSION_NAME
+};
+
+static bool checkDeviceExtensionSupport(VkPhysicalDevice device) {
+    bool supportsExtensions = false;
+    uint32_t extensionCount;
+    vkEnumerateDeviceExtensionProperties(device, NULL, &extensionCount, NULL);
+    
+    VkExtensionProperties *availableExtensions = malloc(extensionCount * sizeof(VkExtensionProperties));
+    vkEnumerateDeviceExtensionProperties(device, NULL, &extensionCount, availableExtensions);
+    
+    // note this assumes only one extension is required
+    for (int i = 0; i < extensionCount; ++i) {
+        if (strcmp(availableExtensions[i].extensionName, deviceExtensions)) {
+            supportsExtensions = true;
+            break;
+        }
+    }
+    
+            return supportsExtensions;
+}
 
 static bool isDeviceSuitable(VkPhysicalDevice device, VkSurfaceKHR surface) {
     QueueFamilyIndices indices = findQueueFamilies(device, surface);
-    return isComplete(indices);
+    return isComplete(indices) && checkDeviceExtensionSupport(device);
 }
 
 void pickPhysicalDevice(VkInstance *instance, VkPhysicalDevice *physicalDevice, VkSurfaceKHR surface) {
