@@ -25,7 +25,7 @@ static bool checkDeviceExtensionSupport(VkPhysicalDevice device) {
             break;
         }
     }
-    
+    free(availableExtensions);
             return supportsExtensions;
 }
 
