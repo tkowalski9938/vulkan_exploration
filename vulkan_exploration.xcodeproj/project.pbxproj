@@ -215,8 +215,8 @@
 				A3AF7034281AC8C800042155 /* instance.c in Sources */,
 				A3E35A232819ACE600D9780A /* queue.c in Sources */,
 				A3E35A1C28198B9200D9780A /* physicalDevice.c in Sources */,
-				A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */,
 				A35AB48B281B0A6A009FD10A /* swapChain.c in Sources */,
+				A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */,
 				A3E359E42816EACE00D9780A /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

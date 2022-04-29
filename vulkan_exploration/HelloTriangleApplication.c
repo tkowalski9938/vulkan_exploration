@@ -31,9 +31,10 @@ static void initVulkan(GLFWwindow *window) {
 static void cleanup(GLFWwindow *window) {
     glfwCleanup(window);
     
-    vkDestroySurfaceKHR(instance, surface, NULL);
     
     vkDestroySwapchainKHR(device, swapChain, NULL);
+    
+    vkDestroySurfaceKHR(instance, surface, NULL);
     
     vkDestroyDevice(device, NULL);
     
