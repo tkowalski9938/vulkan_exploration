@@ -6,6 +6,7 @@
 #include "init/instance.h"
 #include "init/physicalDevice.h"
 #include "init/logicalDevice.h"
+#include "presentation/swapChain.h"
 
 GLFWwindow *window;
 
@@ -15,6 +16,7 @@ VkDevice device;
 VkQueue graphicsQueue;
 VkSurfaceKHR surface;
 VkQueue presentQueue;
+VkSwapchainKHR swapChain;
 
 // initializes Vulkan
 static void initVulkan(GLFWwindow *window) {
@@ -22,6 +24,7 @@ static void initVulkan(GLFWwindow *window) {
     createSurface(&instance, window, &surface);
     pickPhysicalDevice(&instance, &physicalDevice, surface);
     createLogicalDevice(&device, &physicalDevice, &graphicsQueue, surface, &presentQueue);
+    createSwapChain(&physicalDevice, &surface, window, &swapChain, &device);
 }
 
 // clears resources allocated
@@ -29,6 +32,8 @@ static void cleanup(GLFWwindow *window) {
     glfwCleanup(window);
     
     vkDestroySurfaceKHR(instance, surface, NULL);
+    
+    vkDestroySwapchainKHR(device, swapChain, NULL);
     
     vkDestroyDevice(device, NULL);
     

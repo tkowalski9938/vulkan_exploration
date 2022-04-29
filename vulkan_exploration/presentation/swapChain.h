@@ -1,4 +1,5 @@
-#include <vulkan/vulkan.h>
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
 
 struct SwapChainSupportDetails {
     VkSurfaceCapabilitiesKHR capabilities;
@@ -13,6 +14,6 @@ typedef struct SwapChainSupportDetails SwapChainSupportDetails;
 // clears memory from dynamically allocated arrays in struct
 void swapChainSupportDetailsDestory(SwapChainSupportDetails details);
 
-SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice *device, VkSurfaceKHR *surface);
+SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface);
 
-
+void createSwapChain(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface, GLFWwindow *window, VkSwapchainKHR *swapChain, VkDevice *device);

@@ -1,8 +1,10 @@
 #include "swapChain.h"
+#include "../init/queue.h"
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <assert.h>
 
 // clears memory from dynamically allocated arrays in struct
 void swapChainSupportDetailsDestory(SwapChainSupportDetails details) {
@@ -32,7 +34,7 @@ SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice *device, VkSurfac
 }
 
 // picks a VkSurfaceFormatKHR
-VkSurfaceFormatKHR chooseSwapSurfaceFormat(const VkSurfaceFormatKHR *availableFormats, const uint32_t numFormats) {
+static VkSurfaceFormatKHR chooseSwapSurfaceFormat(const VkSurfaceFormatKHR *availableFormats, const uint32_t numFormats) {
     // pick srgb if possible, otherwise pick first option
     for (int i = 0; i < numFormats; ++i) {
         if (availableFormats[i].format == VK_FORMAT_B8G8R8_SRGB && availableFormats[i].colorSpace == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) {
@@ -43,7 +45,7 @@ VkSurfaceFormatKHR chooseSwapSurfaceFormat(const VkSurfaceFormatKHR *availableFo
 }
 
 // picks triple buffering if possible, otherwise standard vsync
-VkPresentModeKHR chooseSwapPresentMode(const VkPresentModeKHR *availablePresentModes, const uint32_t numPresentModes) {
+static VkPresentModeKHR chooseSwapPresentMode(const VkPresentModeKHR *availablePresentModes, const uint32_t numPresentModes) {
     for (int i = 0; i < numPresentModes; ++i) {
         if (availablePresentModes[i] == VK_PRESENT_MODE_MAILBOX_KHR) {
             return availablePresentModes[i];
@@ -66,7 +68,7 @@ static uint32_t myClamp(uint32_t x, uint32_t min, uint32_t max) {
 
 
 // chooses the resolution of the swap chain images
-VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR *capabilities, GLFWwindow *window) {
+static VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR *capabilities, GLFWwindow *window) {
     if (capabilities->currentExtent.width != UINT32_MAX) {
         return capabilities->currentExtent;
     }
@@ -85,4 +87,65 @@ VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR *capabilities, GLFWwi
         
         return actualExtent;
     }
+}
+
+void createSwapChain(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface, GLFWwindow *window, VkSwapchainKHR *swapChain, VkDevice *device) {
+    SwapChainSupportDetails swapChainSupport = querySwapChainSupport(physicalDevice, surface);
+    
+    VkSurfaceFormatKHR surfaceFormat = chooseSwapSurfaceFormat(swapChainSupport.formats, swapChainSupport.numFormats);
+    VkPresentModeKHR presentMode = chooseSwapPresentMode(swapChainSupport.presentModes, swapChainSupport.numPresentModes);
+    VkExtent2D extent = chooseSwapExtent(&swapChainSupport.capabilities, window);
+    
+    uint32_t imageCount = swapChainSupport.capabilities.minImageCount + 1;
+    
+    // makes sure we do not exceed max imageCount
+    if (swapChainSupport.capabilities.maxImageCount > 0 && imageCount > swapChainSupport.capabilities.maxImageCount) {
+        imageCount = swapChainSupport.capabilities.maxImageCount;
+    }
+    
+    VkSwapchainCreateInfoKHR createInfo = {};
+    
+    createInfo.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR;
+    createInfo.surface = *surface;
+    
+    createInfo.minImageCount = imageCount;
+    createInfo.imageFormat = surfaceFormat.format;
+    createInfo.imageColorSpace = surfaceFormat.colorSpace;
+    createInfo.imageExtent = extent;
+    // always 1 unless developing 3D application
+    createInfo.imageArrayLayers = 1;
+    createInfo.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+    
+    // handles swap chain images potentially across multiple queue families
+    QueueFamilyIndices indices = findQueueFamilies(*physicalDevice, *surface);
+    uint32_t queueFamilyIndices[] = {indices.graphicsFamily, indices.presentFamily};
+    // different queues families needed
+    if (indices.graphicsFamily != indices.presentFamily) {
+        createInfo.imageSharingMode = VK_SHARING_MODE_CONCURRENT;
+        createInfo.queueFamilyIndexCount = 2;
+        createInfo.pQueueFamilyIndices = queueFamilyIndices;
+    }
+    else {
+        createInfo.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+        // optional
+        createInfo.queueFamilyIndexCount = 0;
+        createInfo.pQueueFamilyIndices = NULL;
+    }
+    
+    // specifies no transformation
+    createInfo.preTransform = swapChainSupport.capabilities.currentTransform;
+    
+    createInfo.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+    
+    createInfo.presentMode = presentMode;
+    
+    // we don't care about the colour of obscured pixels
+    createInfo.clipped = VK_TRUE;
+    
+    // note that resizing windows needs a recreation of the swapchain, but for simplicity, we assume it is static
+    createInfo.oldSwapchain = VK_NULL_HANDLE;
+    
+    assert((vkCreateSwapchainKHR(*device, &createInfo, NULL, swapChain) == VK_SUCCESS) && "failed to create swap chain");
+    
+    swapChainSupportDetailsDestory(swapChainSupport);
 }
