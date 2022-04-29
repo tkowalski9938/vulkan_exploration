@@ -1,14 +1,18 @@
 #include "physicalDevice.h"
 #include "queue.h"
+#include "../presentation/swapChain.h"
 #include <vulkan/vulkan.h>
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
-static const char *deviceExtensions = {
+
+const char *deviceExtensions = {
     VK_KHR_SWAPCHAIN_EXTENSION_NAME
 };
+
+const uint32_t numDeviceExtensions = 1;
 
 static bool checkDeviceExtensionSupport(VkPhysicalDevice device) {
     bool supportsExtensions = false;
@@ -31,7 +35,15 @@ static bool checkDeviceExtensionSupport(VkPhysicalDevice device) {
 
 static bool isDeviceSuitable(VkPhysicalDevice device, VkSurfaceKHR surface) {
     QueueFamilyIndices indices = findQueueFamilies(device, surface);
-    return isComplete(indices) && checkDeviceExtensionSupport(device);
+    
+    // checks for swapchain support
+    bool swapChainAdequate = false;
+    if (checkDeviceExtensionSupport(device)) {
+        SwapChainSupportDetails swapChainSupport = querySwapChainSupport(&device, &surface);
+        swapChainAdequate = (swapChainSupport.numFormats != 0) && (swapChainSupport.numPresentModes != 0);
+    }
+    
+    return isComplete(indices) && checkDeviceExtensionSupport(device) && swapChainAdequate;
 }
 
 void pickPhysicalDevice(VkInstance *instance, VkPhysicalDevice *physicalDevice, VkSurfaceKHR surface) {

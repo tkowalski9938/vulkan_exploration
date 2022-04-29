@@ -1,5 +1,9 @@
 #include "logicalDevice.h"
 #include "queue.h"
+
+// gives access to deviceExtensions
+#include "physicalDevice.h"
+
 #include "validation.h"
 #include <vulkan/vulkan.h>
 #include <assert.h>
@@ -69,7 +73,9 @@ void createLogicalDevice(VkDevice *device, VkPhysicalDevice *physicalDevice, VkQ
     
     createInfo.pEnabledFeatures = &deviceFeatures;
 
-    createInfo.enabledExtensionCount = 0;
+    
+    createInfo.enabledExtensionCount = numDeviceExtensions;
+    createInfo.ppEnabledExtensionNames = &deviceExtensions;
     
     //createInfo.ppEnabledExtensionNames = enabledExtensions;
     
