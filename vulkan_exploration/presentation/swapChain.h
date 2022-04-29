@@ -14,3 +14,5 @@ typedef struct SwapChainSupportDetails SwapChainSupportDetails;
 void swapChainSupportDetailsDestory(SwapChainSupportDetails details);
 
 SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice *device, VkSurfaceKHR *surface);
+
+
