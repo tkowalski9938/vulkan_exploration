@@ -89,7 +89,7 @@ static VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR *capabilities,
     }
 }
 
-void createSwapChain(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface, GLFWwindow *window, VkSwapchainKHR *swapChain, VkDevice *device) {
+void createSwapChain(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface, GLFWwindow *window, VkSwapchainKHR *swapChain, VkDevice *device, VkImage **swapChainImages, uint32_t *numSwapChainImages, VkFormat *swapChainImageFormat, VkExtent2D *swapChainExtent) {
     SwapChainSupportDetails swapChainSupport = querySwapChainSupport(physicalDevice, surface);
     
     VkSurfaceFormatKHR surfaceFormat = chooseSwapSurfaceFormat(swapChainSupport.formats, swapChainSupport.numFormats);
@@ -148,4 +148,12 @@ void createSwapChain(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface, GL
     assert((vkCreateSwapchainKHR(*device, &createInfo, NULL, swapChain) == VK_SUCCESS) && "failed to create swap chain");
     
     swapChainSupportDetailsDestory(swapChainSupport);
+    
+    vkGetSwapchainImagesKHR(*device, *swapChain, numSwapChainImages, NULL);
+    *swapChainImages = malloc(sizeof(VkImage) * *numSwapChainImages);
+    vkGetSwapchainImagesKHR(*device, *swapChain, numSwapChainImages, *swapChainImages);
+    
+    *swapChainImageFormat = surfaceFormat.format;
+    *swapChainExtent = extent;
+    
 }

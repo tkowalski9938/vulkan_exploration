@@ -1,6 +1,7 @@
 #include "HelloTriangleApplication.h"
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
+#include <stdlib.h>
 #include "presentation/presentSetup.h"
 #include "presentation/surface.h"
 #include "init/instance.h"
@@ -18,19 +19,28 @@ VkSurfaceKHR surface;
 VkQueue presentQueue;
 VkSwapchainKHR swapChain;
 
+// dynamically allocated, must be freed
+VkImage *swapChainImages;
+uint32_t numSwapChainImages;
+
+VkFormat swapChainImageFormat;
+VkExtent2D swapChainExtent;
+
+
 // initializes Vulkan
 static void initVulkan(GLFWwindow *window) {
     createInstance(&instance);
     createSurface(&instance, window, &surface);
     pickPhysicalDevice(&instance, &physicalDevice, surface);
     createLogicalDevice(&device, &physicalDevice, &graphicsQueue, surface, &presentQueue);
-    createSwapChain(&physicalDevice, &surface, window, &swapChain, &device);
+    createSwapChain(&physicalDevice, &surface, window, &swapChain, &device, &swapChainImages, &numSwapChainImages, &swapChainImageFormat, &swapChainExtent);
 }
 
 // clears resources allocated
 static void cleanup(GLFWwindow *window) {
     glfwCleanup(window);
     
+    free(swapChainImages);
     
     vkDestroySwapchainKHR(device, swapChain, NULL);
     

@@ -16,4 +16,4 @@ void swapChainSupportDetailsDestory(SwapChainSupportDetails details);
 
 SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface);
 
-void createSwapChain(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface, GLFWwindow *window, VkSwapchainKHR *swapChain, VkDevice *device);
+void createSwapChain(VkPhysicalDevice *physicalDevice, VkSurfaceKHR *surface, GLFWwindow *window, VkSwapchainKHR *swapChain, VkDevice *device, VkImage **swapChainImages, uint32_t *numSwapChainImages, VkFormat *swapChainImageFormat, VkExtent2D *swapChainExtent);
