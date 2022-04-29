@@ -8,6 +8,7 @@
 #include "init/physicalDevice.h"
 #include "init/logicalDevice.h"
 #include "presentation/swapChain.h"
+#include "presentation/imageView.h"
 
 GLFWwindow *window;
 
@@ -26,6 +27,9 @@ uint32_t numSwapChainImages;
 VkFormat swapChainImageFormat;
 VkExtent2D swapChainExtent;
 
+// dynamically allocated, must be freed
+VkImageView *swapChainImageViews;
+
 
 // initializes Vulkan
 static void initVulkan(GLFWwindow *window) {
@@ -34,13 +38,20 @@ static void initVulkan(GLFWwindow *window) {
     pickPhysicalDevice(&instance, &physicalDevice, surface);
     createLogicalDevice(&device, &physicalDevice, &graphicsQueue, surface, &presentQueue);
     createSwapChain(&physicalDevice, &surface, window, &swapChain, &device, &swapChainImages, &numSwapChainImages, &swapChainImageFormat, &swapChainExtent);
+    createImageViews(&swapChainImageViews, swapChainImages, numSwapChainImages, swapChainImageFormat, &device);
 }
 
 // clears resources allocated
 static void cleanup(GLFWwindow *window) {
     glfwCleanup(window);
     
+    // destorys the individual VkImageViews
+    freeImageView(swapChainImageViews, numSwapChainImages, &device);
+    
     free(swapChainImages);
+    
+    
+    free(swapChainImageViews);
     
     vkDestroySwapchainKHR(device, swapChain, NULL);
     

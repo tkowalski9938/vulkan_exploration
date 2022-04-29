@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A343754E281C70700017AFEE /* imageView.c in Sources */ = {isa = PBXBuildFile; fileRef = A343754D281C70700017AFEE /* imageView.c */; };
 		A35AB48B281B0A6A009FD10A /* swapChain.c in Sources */ = {isa = PBXBuildFile; fileRef = A35AB48A281B0A6A009FD10A /* swapChain.c */; };
 		A3AF7034281AC8C800042155 /* instance.c in Sources */ = {isa = PBXBuildFile; fileRef = A3AF7033281AC8C800042155 /* instance.c */; };
 		A3E359E42816EACE00D9780A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E359E32816EACE00D9780A /* main.c */; };
@@ -41,6 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A343754C281C70700017AFEE /* imageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imageView.h; sourceTree = "<group>"; };
+		A343754D281C70700017AFEE /* imageView.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = imageView.c; sourceTree = "<group>"; };
 		A35AB489281B0A6A009FD10A /* swapChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swapChain.h; sourceTree = "<group>"; };
 		A35AB48A281B0A6A009FD10A /* swapChain.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swapChain.c; sourceTree = "<group>"; };
 		A3AF7033281AC8C800042155 /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 			children = (
 				A3E35A0A281975CB00D9780A /* presentSetup.h */,
 				A3E35A2E2819FB3D00D9780A /* surface.h */,
+				A343754C281C70700017AFEE /* imageView.h */,
+				A343754D281C70700017AFEE /* imageView.c */,
 				A3E35A2F2819FB3D00D9780A /* surface.c */,
 				A3E35A0B281975CB00D9780A /* presentSetup.c */,
 				A35AB489281B0A6A009FD10A /* swapChain.h */,
@@ -210,6 +215,7 @@
 			files = (
 				A3E35A16281982E200D9780A /* validation.c in Sources */,
 				A3E35A302819FB3D00D9780A /* surface.c in Sources */,
+				A343754E281C70700017AFEE /* imageView.c in Sources */,
 				A3E35A0C281975CB00D9780A /* presentSetup.c in Sources */,
 				A3E35A262819AE7400D9780A /* logicalDevice.c in Sources */,
 				A3AF7034281AC8C800042155 /* instance.c in Sources */,
