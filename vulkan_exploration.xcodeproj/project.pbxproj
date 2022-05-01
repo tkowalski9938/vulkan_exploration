@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A343754E281C70700017AFEE /* imageView.c in Sources */ = {isa = PBXBuildFile; fileRef = A343754D281C70700017AFEE /* imageView.c */; };
+		A3437552281EFD060017AFEE /* graphicsPipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = A3437551281EFD060017AFEE /* graphicsPipeline.c */; };
 		A35AB48B281B0A6A009FD10A /* swapChain.c in Sources */ = {isa = PBXBuildFile; fileRef = A35AB48A281B0A6A009FD10A /* swapChain.c */; };
 		A3AF7034281AC8C800042155 /* instance.c in Sources */ = {isa = PBXBuildFile; fileRef = A3AF7033281AC8C800042155 /* instance.c */; };
 		A3E359E42816EACE00D9780A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E359E32816EACE00D9780A /* main.c */; };
@@ -44,6 +45,13 @@
 /* Begin PBXFileReference section */
 		A343754C281C70700017AFEE /* imageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imageView.h; sourceTree = "<group>"; };
 		A343754D281C70700017AFEE /* imageView.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = imageView.c; sourceTree = "<group>"; };
+		A3437550281EFD060017AFEE /* graphicsPipeline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graphicsPipeline.h; sourceTree = "<group>"; };
+		A3437551281EFD060017AFEE /* graphicsPipeline.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = graphicsPipeline.c; sourceTree = "<group>"; };
+		A3437557281F11130017AFEE /* shader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		A3437558281F12300017AFEE /* shader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
+		A343755C281F1B410017AFEE /* shadersCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shadersCompile.sh; sourceTree = "<group>"; };
+		A343755D281F1CB30017AFEE /* frag.spv */ = {isa = PBXFileReference; lastKnownFileType = file; path = frag.spv; sourceTree = "<group>"; };
+		A343755E281F1CB90017AFEE /* vert.spv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vert.spv; sourceTree = "<group>"; };
 		A35AB489281B0A6A009FD10A /* swapChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swapChain.h; sourceTree = "<group>"; };
 		A35AB48A281B0A6A009FD10A /* swapChain.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swapChain.c; sourceTree = "<group>"; };
 		A3AF7033281AC8C800042155 /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
@@ -84,6 +92,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A343754F281ECF280017AFEE /* graphicsPipeline */ = {
+			isa = PBXGroup;
+			children = (
+				A3437550281EFD060017AFEE /* graphicsPipeline.h */,
+				A3437551281EFD060017AFEE /* graphicsPipeline.c */,
+			);
+			path = graphicsPipeline;
+			sourceTree = "<group>";
+		};
+		A3437553281F01170017AFEE /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				A343755E281F1CB90017AFEE /* vert.spv */,
+				A343755D281F1CB30017AFEE /* frag.spv */,
+				A3437557281F11130017AFEE /* shader.vert */,
+				A3437558281F12300017AFEE /* shader.frag */,
+				A343755C281F1B410017AFEE /* shadersCompile.sh */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
 		A3E359D72816EACE00D9780A = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +136,8 @@
 				A3E359E32816EACE00D9780A /* main.c */,
 				A3E35A072819744B00D9780A /* HelloTriangleApplication.c */,
 				A3E35A062819744B00D9780A /* HelloTriangleApplication.h */,
+				A3437553281F01170017AFEE /* shaders */,
+				A343754F281ECF280017AFEE /* graphicsPipeline */,
 				A3E35A272819EDAD00D9780A /* presentation */,
 				A3E35A1D2819941100D9780A /* init */,
 			);
@@ -166,6 +197,7 @@
 				A3E359DC2816EACE00D9780A /* Sources */,
 				A3E359DD2816EACE00D9780A /* Frameworks */,
 				A3E359DE2816EACE00D9780A /* CopyFiles */,
+				A343755B281F17700017AFEE /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -208,6 +240,28 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A343755B281F17700017AFEE /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A3E359DC2816EACE00D9780A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -215,11 +269,12 @@
 			files = (
 				A3E35A16281982E200D9780A /* validation.c in Sources */,
 				A3E35A302819FB3D00D9780A /* surface.c in Sources */,
+				A3437552281EFD060017AFEE /* graphicsPipeline.c in Sources */,
 				A343754E281C70700017AFEE /* imageView.c in Sources */,
 				A3E35A0C281975CB00D9780A /* presentSetup.c in Sources */,
 				A3E35A262819AE7400D9780A /* logicalDevice.c in Sources */,
-				A3AF7034281AC8C800042155 /* instance.c in Sources */,
 				A3E35A232819ACE600D9780A /* queue.c in Sources */,
+				A3AF7034281AC8C800042155 /* instance.c in Sources */,
 				A35AB48B281B0A6A009FD10A /* swapChain.c in Sources */,
 				A3E35A1C28198B9200D9780A /* physicalDevice.c in Sources */,
 				A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */,

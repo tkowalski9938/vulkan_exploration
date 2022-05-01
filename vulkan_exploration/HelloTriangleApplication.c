@@ -9,6 +9,7 @@
 #include "init/logicalDevice.h"
 #include "presentation/swapChain.h"
 #include "presentation/imageView.h"
+#include "graphicsPipeline/graphicsPipeline.h"
 
 GLFWwindow *window;
 
@@ -39,6 +40,7 @@ static void initVulkan(GLFWwindow *window) {
     createLogicalDevice(&device, &physicalDevice, &graphicsQueue, surface, &presentQueue);
     createSwapChain(&physicalDevice, &surface, window, &swapChain, &device, &swapChainImages, &numSwapChainImages, &swapChainImageFormat, &swapChainExtent);
     createImageViews(&swapChainImageViews, swapChainImages, numSwapChainImages, swapChainImageFormat, &device);
+    createGraphicsPipeline();
 }
 
 // clears resources allocated
