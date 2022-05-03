@@ -31,6 +31,8 @@ VkExtent2D swapChainExtent;
 // dynamically allocated, must be freed
 VkImageView *swapChainImageViews;
 
+VkPipelineLayout pipelineLayout;
+
 
 // initializes Vulkan
 static void initVulkan(GLFWwindow *window) {
@@ -40,11 +42,13 @@ static void initVulkan(GLFWwindow *window) {
     createLogicalDevice(&device, &physicalDevice, &graphicsQueue, surface, &presentQueue);
     createSwapChain(&physicalDevice, &surface, window, &swapChain, &device, &swapChainImages, &numSwapChainImages, &swapChainImageFormat, &swapChainExtent);
     createImageViews(&swapChainImageViews, swapChainImages, numSwapChainImages, swapChainImageFormat, &device);
-    createGraphicsPipeline(&device);
+    createGraphicsPipeline(&device, &swapChainExtent, &pipelineLayout);
 }
 
 // clears resources allocated
 static void cleanup(GLFWwindow *window) {
+    vkDestroyPipelineLayout(device, pipelineLayout, NULL);
+    
     glfwCleanup(window);
     
     // destorys the individual VkImageViews
