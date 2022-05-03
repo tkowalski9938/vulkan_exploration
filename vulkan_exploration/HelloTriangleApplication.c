@@ -40,7 +40,7 @@ static void initVulkan(GLFWwindow *window) {
     createLogicalDevice(&device, &physicalDevice, &graphicsQueue, surface, &presentQueue);
     createSwapChain(&physicalDevice, &surface, window, &swapChain, &device, &swapChainImages, &numSwapChainImages, &swapChainImageFormat, &swapChainExtent);
     createImageViews(&swapChainImageViews, swapChainImages, numSwapChainImages, swapChainImageFormat, &device);
-    createGraphicsPipeline();
+    createGraphicsPipeline(&device);
 }
 
 // clears resources allocated

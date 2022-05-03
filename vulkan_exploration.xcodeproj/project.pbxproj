@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A343754E281C70700017AFEE /* imageView.c in Sources */ = {isa = PBXBuildFile; fileRef = A343754D281C70700017AFEE /* imageView.c */; };
 		A3437552281EFD060017AFEE /* graphicsPipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = A3437551281EFD060017AFEE /* graphicsPipeline.c */; };
+		A3437564281F201E0017AFEE /* readShader.c in Sources */ = {isa = PBXBuildFile; fileRef = A3437563281F201E0017AFEE /* readShader.c */; };
 		A35AB48B281B0A6A009FD10A /* swapChain.c in Sources */ = {isa = PBXBuildFile; fileRef = A35AB48A281B0A6A009FD10A /* swapChain.c */; };
 		A3AF7034281AC8C800042155 /* instance.c in Sources */ = {isa = PBXBuildFile; fileRef = A3AF7033281AC8C800042155 /* instance.c */; };
 		A3E359E42816EACE00D9780A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E359E32816EACE00D9780A /* main.c */; };
@@ -52,6 +53,8 @@
 		A343755C281F1B410017AFEE /* shadersCompile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shadersCompile.sh; sourceTree = "<group>"; };
 		A343755D281F1CB30017AFEE /* frag.spv */ = {isa = PBXFileReference; lastKnownFileType = file; path = frag.spv; sourceTree = "<group>"; };
 		A343755E281F1CB90017AFEE /* vert.spv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vert.spv; sourceTree = "<group>"; };
+		A3437562281F201E0017AFEE /* readShader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readShader.h; sourceTree = "<group>"; };
+		A3437563281F201E0017AFEE /* readShader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = readShader.c; sourceTree = "<group>"; };
 		A35AB489281B0A6A009FD10A /* swapChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swapChain.h; sourceTree = "<group>"; };
 		A35AB48A281B0A6A009FD10A /* swapChain.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swapChain.c; sourceTree = "<group>"; };
 		A3AF7033281AC8C800042155 /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				A3437557281F11130017AFEE /* shader.vert */,
 				A3437558281F12300017AFEE /* shader.frag */,
 				A343755C281F1B410017AFEE /* shadersCompile.sh */,
+				A3437562281F201E0017AFEE /* readShader.h */,
+				A3437563281F201E0017AFEE /* readShader.c */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
@@ -270,8 +275,8 @@
 				A3E35A16281982E200D9780A /* validation.c in Sources */,
 				A3E35A302819FB3D00D9780A /* surface.c in Sources */,
 				A3437552281EFD060017AFEE /* graphicsPipeline.c in Sources */,
-				A343754E281C70700017AFEE /* imageView.c in Sources */,
 				A3E35A0C281975CB00D9780A /* presentSetup.c in Sources */,
+				A343754E281C70700017AFEE /* imageView.c in Sources */,
 				A3E35A262819AE7400D9780A /* logicalDevice.c in Sources */,
 				A3E35A232819ACE600D9780A /* queue.c in Sources */,
 				A3AF7034281AC8C800042155 /* instance.c in Sources */,
@@ -279,6 +284,7 @@
 				A3E35A1C28198B9200D9780A /* physicalDevice.c in Sources */,
 				A3E35A082819744B00D9780A /* HelloTriangleApplication.c in Sources */,
 				A3E359E42816EACE00D9780A /* main.c in Sources */,
+				A3437564281F201E0017AFEE /* readShader.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
