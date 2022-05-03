@@ -10,6 +10,7 @@
 		A343754E281C70700017AFEE /* imageView.c in Sources */ = {isa = PBXBuildFile; fileRef = A343754D281C70700017AFEE /* imageView.c */; };
 		A3437552281EFD060017AFEE /* graphicsPipeline.c in Sources */ = {isa = PBXBuildFile; fileRef = A3437551281EFD060017AFEE /* graphicsPipeline.c */; };
 		A3437564281F201E0017AFEE /* readShader.c in Sources */ = {isa = PBXBuildFile; fileRef = A3437563281F201E0017AFEE /* readShader.c */; };
+		A34375672820D1C20017AFEE /* renderPass.c in Sources */ = {isa = PBXBuildFile; fileRef = A34375662820D1C20017AFEE /* renderPass.c */; };
 		A35AB48B281B0A6A009FD10A /* swapChain.c in Sources */ = {isa = PBXBuildFile; fileRef = A35AB48A281B0A6A009FD10A /* swapChain.c */; };
 		A3AF7034281AC8C800042155 /* instance.c in Sources */ = {isa = PBXBuildFile; fileRef = A3AF7033281AC8C800042155 /* instance.c */; };
 		A3E359E42816EACE00D9780A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A3E359E32816EACE00D9780A /* main.c */; };
@@ -55,6 +56,8 @@
 		A343755E281F1CB90017AFEE /* vert.spv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vert.spv; sourceTree = "<group>"; };
 		A3437562281F201E0017AFEE /* readShader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readShader.h; sourceTree = "<group>"; };
 		A3437563281F201E0017AFEE /* readShader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = readShader.c; sourceTree = "<group>"; };
+		A34375652820D1C20017AFEE /* renderPass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = renderPass.h; sourceTree = "<group>"; };
+		A34375662820D1C20017AFEE /* renderPass.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = renderPass.c; sourceTree = "<group>"; };
 		A35AB489281B0A6A009FD10A /* swapChain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swapChain.h; sourceTree = "<group>"; };
 		A35AB48A281B0A6A009FD10A /* swapChain.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = swapChain.c; sourceTree = "<group>"; };
 		A3AF7033281AC8C800042155 /* instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = instance.c; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 			children = (
 				A3437550281EFD060017AFEE /* graphicsPipeline.h */,
 				A3437551281EFD060017AFEE /* graphicsPipeline.c */,
+				A34375652820D1C20017AFEE /* renderPass.h */,
+				A34375662820D1C20017AFEE /* renderPass.c */,
 			);
 			path = graphicsPipeline;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A34375672820D1C20017AFEE /* renderPass.c in Sources */,
 				A3E35A16281982E200D9780A /* validation.c in Sources */,
 				A3E35A302819FB3D00D9780A /* surface.c in Sources */,
 				A3437552281EFD060017AFEE /* graphicsPipeline.c in Sources */,
