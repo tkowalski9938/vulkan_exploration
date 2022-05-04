@@ -73,6 +73,7 @@
 		A3BF39842822CB2C00E5101E /* commandBuffer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = commandBuffer.c; sourceTree = "<group>"; };
 		A3BF39862822DA3D00E5101E /* drawFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = drawFrame.h; sourceTree = "<group>"; };
 		A3BF39872822DA3D00E5101E /* drawFrame.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = drawFrame.c; sourceTree = "<group>"; };
+		A3BF39892823008500E5101E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A3E359E02816EACE00D9780A /* vulkan_exploration */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vulkan_exploration; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3E359E32816EACE00D9780A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		A3E359EB2816EB2E00D9780A /* libvulkan.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvulkan.1.dylib; path = ../../../../VulkanSDK/1.3.211.0/macOS/lib/libvulkan.1.dylib; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		A3E359D72816EACE00D9780A = {
 			isa = PBXGroup;
 			children = (
+				A3BF39892823008500E5101E /* README.md */,
 				A3E359E22816EACE00D9780A /* vulkan_exploration */,
 				A3E359E12816EACE00D9780A /* Products */,
 				A3E359EA2816EB2D00D9780A /* Frameworks */,
