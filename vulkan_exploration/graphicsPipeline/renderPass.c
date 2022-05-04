@@ -34,4 +34,6 @@ void createRenderPass(VkFormat *swapChainImageFormat, VkRenderPass *renderPass, 
     renderPassInfo.pSubpasses = &subpass;
     
     assert((vkCreateRenderPass(*device, &renderPassInfo, NULL, renderPass) == VK_SUCCESS) && "failed to create render pass");
+    
+    
 }
