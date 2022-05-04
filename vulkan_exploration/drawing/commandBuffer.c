@@ -38,4 +38,11 @@ void recordCommandBuffer(VkCommandBuffer *commandBuffer, uint32_t imageIndex, Vk
     
     //binds the graphics pipeline
     vkCmdBindPipeline(*commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, *graphicsPipeline);
+    
+    // draws the triangle
+    vkCmdDraw(*commandBuffer, 3, 1, 0, 0);
+    
+    vkCmdEndRenderPass(*commandBuffer);
+    
+    assert((vkEndCommandBuffer(*commandBuffer) == VK_SUCCESS) && "failed to record command buffer");
 }
