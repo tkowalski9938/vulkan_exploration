@@ -13,6 +13,7 @@
 #include "graphicsPipeline/renderPass.h"
 #include "drawing/framebuffer.h"
 #include "drawing/commandPool.h"
+#include "drawing/commandBuffer.h"
 
 GLFWwindow *window;
 
@@ -43,7 +44,9 @@ VkPipeline graphicsPipeline;
 VkFramebuffer *swapChainFramebuffers;
 // the num of elements is the number of images in the swapchain
 
-VkCommandPool commandPool; 
+VkCommandPool commandPool;
+
+VkCommandBuffer commandBuffer;
 
 
 // initializes Vulkan
@@ -58,6 +61,8 @@ static void initVulkan(GLFWwindow *window) {
     createGraphicsPipeline(&device, &swapChainExtent, &pipelineLayout, &renderPass, &graphicsPipeline);
     createFramebuffers(&device, &swapChainFramebuffers, numSwapChainImages, swapChainImageViews, &renderPass, swapChainExtent);
     createCommandPool(&device, &physicalDevice, &surface, &commandPool);
+    createCommandBuffer(&commandPool, &device, &commandBuffer);
+    
     
 }
 
