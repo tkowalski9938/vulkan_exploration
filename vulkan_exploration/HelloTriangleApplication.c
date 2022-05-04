@@ -35,6 +35,8 @@ VkImageView *swapChainImageViews;
 VkRenderPass renderPass;
 VkPipelineLayout pipelineLayout;
 
+VkPipeline graphicsPipeline;
+
 
 // initializes Vulkan
 static void initVulkan(GLFWwindow *window) {
@@ -45,11 +47,13 @@ static void initVulkan(GLFWwindow *window) {
     createSwapChain(&physicalDevice, &surface, window, &swapChain, &device, &swapChainImages, &numSwapChainImages, &swapChainImageFormat, &swapChainExtent);
     createImageViews(&swapChainImageViews, swapChainImages, numSwapChainImages, swapChainImageFormat, &device);
     createRenderPass(&swapChainImageFormat, &renderPass, &device);
-    createGraphicsPipeline(&device, &swapChainExtent, &pipelineLayout);
+    createGraphicsPipeline(&device, &swapChainExtent, &pipelineLayout, &renderPass, &graphicsPipeline);
 }
 
 // clears resources allocated
 static void cleanup(GLFWwindow *window) {
+    vkDestroyPipeline(device, graphicsPipeline, NULL);
+    
     vkDestroyPipelineLayout(device, pipelineLayout, NULL);
     
     vkDestroyRenderPass(device, renderPass, NULL);

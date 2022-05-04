@@ -17,7 +17,7 @@ static VkShaderModule createShaderModule(VkDevice *device, shaderData *data) {
     return shaderModule;
 }
 
-void createGraphicsPipeline(VkDevice *device, VkExtent2D *swapChainExtent, VkPipelineLayout *pipelineLayout) {
+void createGraphicsPipeline(VkDevice *device, VkExtent2D *swapChainExtent, VkPipelineLayout *pipelineLayout, VkRenderPass *renderPass, VkPipeline *graphicsPipeline) {
         
     // dynamically allocated, need to free
     shaderData *vertShader = readShader("/Users/tkowalsk/Desktop/CoreAVI/Learning Vulkan/vulkan_exploration/vulkan_exploration/shaders/vert.spv");
@@ -138,6 +138,33 @@ void createGraphicsPipeline(VkDevice *device, VkExtent2D *swapChainExtent, VkPip
     pipelineLayoutInfo.pPushConstantRanges = NULL; // Optional
     
     assert((vkCreatePipelineLayout(*device, &pipelineLayoutInfo, NULL, pipelineLayout) == VK_SUCCESS) && "failed to create pipeline layout");
+    
+    
+    // creates the actual graphics pipeline
+    VkGraphicsPipelineCreateInfo pipelineInfo = {};
+    pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
+    pipelineInfo.stageCount = 2;
+    pipelineInfo.pStages = shaderStages;
+    
+    pipelineInfo.pVertexInputState = &vertexInputInfo;
+    pipelineInfo.pInputAssemblyState = &inputAssembly;
+    pipelineInfo.pViewportState = &viewportState;
+    pipelineInfo.pRasterizationState = &rasterizer;
+    pipelineInfo.pMultisampleState = &multisampling;
+    pipelineInfo.pDepthStencilState = NULL; // Optional
+    pipelineInfo.pColorBlendState = &colorBlending;
+    pipelineInfo.pDynamicState = NULL; // Optional
+    
+    pipelineInfo.layout = *pipelineLayout;
+    
+    pipelineInfo.renderPass = *renderPass;
+    pipelineInfo.subpass = 0;
+    
+    pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
+    pipelineInfo.basePipelineIndex = -1; // Optional
+    
+    // creates the actual pipeline
+    assert((vkCreateGraphicsPipelines(*device, VK_NULL_HANDLE, 1, &pipelineInfo, NULL, graphicsPipeline) == VK_SUCCESS) && "failed to create graphics pipeline");
     
     vkDestroyShaderModule(*device, vertShaderModule, NULL);
     vkDestroyShaderModule(*device, fragShaderModule, NULL);
