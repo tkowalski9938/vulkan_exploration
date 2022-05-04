@@ -15,7 +15,7 @@ GLFWwindow *initWindow(void) {
     
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
     
-    GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Vulkan", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Tyler's Hello Triangle in Vulkan", NULL, NULL);
     
     return window;
 }
