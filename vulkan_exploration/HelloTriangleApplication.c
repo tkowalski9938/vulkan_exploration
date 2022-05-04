@@ -2,6 +2,7 @@
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "presentation/presentSetup.h"
 #include "presentation/surface.h"
 #include "init/instance.h"
@@ -48,6 +49,22 @@ VkCommandPool commandPool;
 
 VkCommandBuffer commandBuffer;
 
+VkSemaphore imageAvailableSemaphore;
+VkSemaphore renderFinishedSemaphore;
+VkFence inFlightFence;
+
+// creates the sync objects
+static void createSyncObjects(void) {
+    VkSemaphoreCreateInfo semaphoreInfo = {};
+    semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+    
+    VkFenceCreateInfo fenceInfo = {};
+    fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+    
+    assert((vkCreateSemaphore(device, &semaphoreInfo, NULL, &imageAvailableSemaphore) == VK_SUCCESS) && "failed to create imageAvailableSemaphore");
+    assert((vkCreateSemaphore(device, &semaphoreInfo, NULL, &renderFinishedSemaphore) == VK_SUCCESS) && "failed to create renderFinishedSemaphore");
+    assert((vkCreateFence(device, &fenceInfo, NULL, &inFlightFence) == VK_SUCCESS) && "failed to create inFlightFence");
+}
 
 // initializes Vulkan
 static void initVulkan(GLFWwindow *window) {
@@ -62,12 +79,15 @@ static void initVulkan(GLFWwindow *window) {
     createFramebuffers(&device, &swapChainFramebuffers, numSwapChainImages, swapChainImageViews, &renderPass, swapChainExtent);
     createCommandPool(&device, &physicalDevice, &surface, &commandPool);
     createCommandBuffer(&commandPool, &device, &commandBuffer);
-    
-    
+    createSyncObjects();
 }
 
 // clears resources allocated
 static void cleanup(GLFWwindow *window) {
+    vkDestroySemaphore(device, imageAvailableSemaphore, NULL);
+    vkDestroySemaphore(device, renderFinishedSemaphore, NULL);
+    vkDestroyFence(device, inFlightFence, NULL);
+    
     vkDestroyCommandPool(device, commandPool, NULL);
     
     destroyFramebuffers(&device, swapChainFramebuffers, numSwapChainImages);
