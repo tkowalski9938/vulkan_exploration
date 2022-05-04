@@ -307,11 +307,11 @@
 			files = (
 				A34375672820D1C20017AFEE /* renderPass.c in Sources */,
 				A3E35A16281982E200D9780A /* validation.c in Sources */,
+				A3E35A262819AE7400D9780A /* logicalDevice.c in Sources */,
 				A3E35A302819FB3D00D9780A /* surface.c in Sources */,
+				A343754E281C70700017AFEE /* imageView.c in Sources */,
 				A3437552281EFD060017AFEE /* graphicsPipeline.c in Sources */,
 				A3E35A0C281975CB00D9780A /* presentSetup.c in Sources */,
-				A343754E281C70700017AFEE /* imageView.c in Sources */,
-				A3E35A262819AE7400D9780A /* logicalDevice.c in Sources */,
 				A3BF39822822C6DD00E5101E /* commandPool.c in Sources */,
 				A3E35A232819ACE600D9780A /* queue.c in Sources */,
 				A3AF7034281AC8C800042155 /* instance.c in Sources */,

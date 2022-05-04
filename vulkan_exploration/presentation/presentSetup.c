@@ -21,11 +21,13 @@ GLFWwindow *initWindow(void) {
 }
  
 
-void mainLoop(GLFWwindow *window) {
+void mainLoop(GLFWwindow *window, VkDevice *device, VkFence *inFlightFence, VkSwapchainKHR *swapchain, VkSemaphore *imageAvailableSemaphore, VkCommandBuffer *commandBuffer, VkFramebuffer *swapChainFramebuffers, VkExtent2D *swapChainExtent, VkPipeline *graphicsPipeline, VkSemaphore *renderFinishedSemaphore, VkQueue *graphicsQueue, VkQueue *presentQueue, VkRenderPass *renderPass) {
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-        drawFrame();
+        drawFrame(device, inFlightFence, swapchain, imageAvailableSemaphore, commandBuffer, swapChainFramebuffers, swapChainExtent, graphicsPipeline, renderFinishedSemaphore, graphicsQueue, presentQueue, renderPass);
     }
+    
+    vkDeviceWaitIdle(*device);
 }
 
 void glfwCleanup(GLFWwindow *window) {

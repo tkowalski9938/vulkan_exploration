@@ -3,7 +3,7 @@
 #include <assert.h>
 
 void createRenderPass(VkFormat *swapChainImageFormat, VkRenderPass *renderPass, VkDevice *device) {
-    // single colour buffer attachement
+        // single colour buffer attachement
     VkAttachmentDescription colorAttachment = {};
         colorAttachment.format = *swapChainImageFormat;
         colorAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
@@ -33,6 +33,17 @@ void createRenderPass(VkFormat *swapChainImageFormat, VkRenderPass *renderPass, 
     renderPassInfo.subpassCount = 1;
     renderPassInfo.pSubpasses = &subpass;
     
+    VkSubpassDependency dependency = {};
+    dependency.srcSubpass = VK_SUBPASS_EXTERNAL;
+    dependency.dstSubpass = 0;
+    dependency.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    dependency.srcAccessMask = 0;
+    dependency.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    dependency.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
+    
+    renderPassInfo.dependencyCount = 1;
+    renderPassInfo.pDependencies = &dependency;
+
     assert((vkCreateRenderPass(*device, &renderPassInfo, NULL, renderPass) == VK_SUCCESS) && "failed to create render pass");
     
     

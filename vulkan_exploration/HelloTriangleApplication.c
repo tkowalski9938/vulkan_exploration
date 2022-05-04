@@ -60,6 +60,8 @@ static void createSyncObjects(void) {
     
     VkFenceCreateInfo fenceInfo = {};
     fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+    // fence starts off in signaled state
+    fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
     
     assert((vkCreateSemaphore(device, &semaphoreInfo, NULL, &imageAvailableSemaphore) == VK_SUCCESS) && "failed to create imageAvailableSemaphore");
     assert((vkCreateSemaphore(device, &semaphoreInfo, NULL, &renderFinishedSemaphore) == VK_SUCCESS) && "failed to create renderFinishedSemaphore");
@@ -122,7 +124,7 @@ void run(void) {
     GLFWwindow *window = initWindow();
     
     initVulkan(window);
-    mainLoop(window);
+    mainLoop(window, &device, &inFlightFence, &swapChain, &imageAvailableSemaphore, &commandBuffer, swapChainFramebuffers, &swapChainExtent, &graphicsPipeline, &renderFinishedSemaphore, &graphicsQueue, &presentQueue, &renderPass);
     cleanup(window);
 }
 

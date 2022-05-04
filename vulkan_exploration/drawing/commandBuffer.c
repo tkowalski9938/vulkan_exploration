@@ -1,6 +1,7 @@
 #include "commandBuffer.h"
 #include <vulkan/vulkan.h>
 #include <assert.h>
+#include <stdio.h>
 
 
 void createCommandBuffer(VkCommandPool *commandPool, VkDevice *device, VkCommandBuffer *commandBuffer) {
@@ -14,7 +15,7 @@ void createCommandBuffer(VkCommandPool *commandPool, VkDevice *device, VkCommand
     assert((vkAllocateCommandBuffers(*device, &allocInfo, commandBuffer) == VK_SUCCESS) && "failed to allocate command buffers");
 }
 
-void recordCommandBuffer(VkCommandBuffer *commandBuffer, uint32_t imageIndex, VkFramebuffer *swapChainFramebuffers, VkExtent2D swapChainExtent, VkPipeline *graphicsPipeline) {
+void recordCommandBuffer(VkCommandBuffer *commandBuffer, uint32_t imageIndex, VkFramebuffer *swapChainFramebuffers, VkExtent2D swapChainExtent, VkPipeline *graphicsPipeline, VkRenderPass *renderPass) {
     VkCommandBufferBeginInfo beginInfo = {};
     beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
     beginInfo.flags = 0; // optional
@@ -24,6 +25,7 @@ void recordCommandBuffer(VkCommandBuffer *commandBuffer, uint32_t imageIndex, Vk
     
     VkRenderPassBeginInfo renderPassInfo = {};
     renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+    renderPassInfo.renderPass = *renderPass;
     renderPassInfo.framebuffer = swapChainFramebuffers[imageIndex];
     
     renderPassInfo.renderArea.offset = (VkOffset2D){0,0};
