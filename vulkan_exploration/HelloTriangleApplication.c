@@ -11,6 +11,7 @@
 #include "presentation/imageView.h"
 #include "graphicsPipeline/graphicsPipeline.h"
 #include "graphicsPipeline/renderPass.h"
+#include "drawing/framebuffer.h"
 
 GLFWwindow *window;
 
@@ -37,6 +38,10 @@ VkPipelineLayout pipelineLayout;
 
 VkPipeline graphicsPipeline;
 
+// dynamically allocated, needs to be freed
+VkFramebuffer *swapChainFramebuffers;
+// the num of elements is the number of images in the swapchain
+
 
 // initializes Vulkan
 static void initVulkan(GLFWwindow *window) {
@@ -48,10 +53,14 @@ static void initVulkan(GLFWwindow *window) {
     createImageViews(&swapChainImageViews, swapChainImages, numSwapChainImages, swapChainImageFormat, &device);
     createRenderPass(&swapChainImageFormat, &renderPass, &device);
     createGraphicsPipeline(&device, &swapChainExtent, &pipelineLayout, &renderPass, &graphicsPipeline);
+    createFramebuffers(&device, &swapChainFramebuffers, numSwapChainImages, swapChainImageViews, &renderPass, swapChainExtent);
+    
 }
 
 // clears resources allocated
 static void cleanup(GLFWwindow *window) {
+    destroyFramebuffers(&device, swapChainFramebuffers, numSwapChainImages);
+    
     vkDestroyPipeline(device, graphicsPipeline, NULL);
     
     vkDestroyPipelineLayout(device, pipelineLayout, NULL);
